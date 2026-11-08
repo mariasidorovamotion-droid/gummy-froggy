@@ -1,0 +1,61 @@
+/* Reusable live-text counter. Parent establishes units relative to button width. */
+.boost, .gummy-booster { container-type: inline-size; }
+.boost .badge, .gummy-count {
+  --count-top: #399c78;
+  --count-bottom: #12533f;
+  --count-depth: #083e30;
+  position: absolute;
+  z-index: 2;
+  top: 3%;
+  right: 1%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .09em;
+  box-sizing: border-box;
+  min-width: 58cqw;
+  height: 34cqw;
+  padding: 0 8cqw;
+  border: 2cqw solid #efcf8a;
+  border-radius: 20cqw;
+  background: linear-gradient(165deg, var(--count-top), var(--count-bottom) 80%);
+  box-shadow: 0 3cqw 0 var(--count-depth),
+    0 5cqw 7cqw #001c2866,
+    inset 0 1.5cqw 0 #ffffff65,
+    inset 0 -2cqw 0 #002d3250;
+  color: #fff6d8;
+  font-family: 'Fredoka', 'Trebuchet MS', system-ui, sans-serif;
+  font-size: 23cqw;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -.025em;
+  white-space: nowrap;
+  text-shadow: 0 1.5cqw 0 #073c32;
+  pointer-events: none;
+  isolation: isolate;
+}
+.boost .badge::before, .gummy-count::before {
+  content: attr(data-prefix);
+  font-size: .68em;
+  font-weight: 500;
+  opacity: .85;
+}
+.boost .badge::after, .gummy-count::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 5% 8% auto;
+  height: 38%;
+  border-radius: 999px;
+  background: linear-gradient(#ffffff38, #ffffff00);
+  pointer-events: none;
+}
+.boost.empty .badge, .gummy-count.is-empty {
+  --count-top: #927456;
+  --count-bottom: #58412f;
+  --count-depth: #372a20;
+  border-color: #bda77b;
+  color: #e9d9b8;
+  text-shadow: 0 1.5cqw 0 #3d2b20;
+}

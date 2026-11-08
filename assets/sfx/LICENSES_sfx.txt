@@ -1,0 +1,16 @@
+Gummy Froggy — источники звуков слияния (assets/sfx/merge_01..10.mp3), 2026-11-07, собрала Claude
+Все исходники — CC0 (общественное достояние), указание автора не требуется.
+- Kenney, "Interface Sounds" 1.0 — drop_002.ogg, drop_004.ogg — CC0 — https://opengameart.org/content/interface-sounds
+- rubberduck, "100 CC0 SFX" — plop_01.ogg (в демо) — CC0 — https://opengameart.org/content/100-cc0-sfx
+Обработка: смещение тона по ступеням конфет, второй мягкий «блоп» у крупных, фильтр 2.6 кГц, плавная атака 4 мс.
+
+Фон «жабы» (assets/gf_frogs_ambience.mp3), 2026-11-07:
+- BigSoundBank, "Song of the common midwife toad #4" (#1666) — CC0 — https://bigsoundbank.com/song-of-the-common-midwife-toad-4-s1666.html
+Обработка: нарезка отдельных «буп», две далёкие жабы (−4 и −7 полутонов), редкие случайные интервалы 3.5–11 с, стерео, фильтр 1.8 кГц, лёгкий ревер, длина = петле музыки 96.711 с.
+
+v0.16 (2026-11-07) — три отдельных звуковых канала: музыка / лягушки / болото.
+Лягушки: assets/gf_frogs_pond_01.mp3 и assets/gf_frogs_field_pond_03.mp3 — записи, которые прислала Сова (Frogs_Pond_01_Full, Frogs_Field_Pond_03_Full), зациклены с кроссфейдом 4 с. Права на них — у источника, откуда их взяла Сова.
+Болото: assets/gf_swamp_ambience.mp3 — CC0 BigSoundBank:
+- "Small waves, rocks and beach" (#1445) — https://bigsoundbank.com/small-waves-rocks-and-beach-s1445.html
+- "Campaign at night #4" (#1880), далёкие сверчки, приглушены — https://bigsoundbank.com/campaign-at-night-4-s1880.html
+gf_frogs_ambience.mp3 (жаба #1666) больше не используется.

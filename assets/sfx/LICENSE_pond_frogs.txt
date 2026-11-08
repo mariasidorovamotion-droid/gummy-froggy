@@ -1,0 +1,15 @@
+Pond frogs ambience — Gummy Froggy
+Source: One frog (#0819), Joseph SARDIN / BigSoundBank.com
+https://bigsoundbank.com/one-frog-s0819.html
+Download: https://bigsoundbank.com/UPLOAD/bwf-en/0819.wav
+License verified 2026-11-07: CC0 1.0 Universal / public-domain dedication.
+https://bigsoundbank.com/licenses.html
+https://creativecommons.org/publicdomain/zero/1.0/
+The source page permits free commercial use, modification and redistribution; attribution optional.
+
+Derived file: pond_frogs_soft.mp3 (48 seconds, mono, 44.1 kHz, 64 kbps).
+Three source passages: 0–4.1s, 5.2–10.7s, 12–14.59s.
+Placed at 3s, 18s and 35s, with fades, 130 Hz high-pass and 2200 Hz low-pass.
+Source gain 1x before encoding; runtime gain 0.025 (separate layer).
+No synthesized or paid audio used. Original WAV and HTML backup are in 00_Статика/16_Звуки_пруда.
+Playback requires a user gesture; independent gf.frogs switch and gain. Can play with music and effects disabled. Stops in background tabs. Legacy music.frogs bus is disabled to prevent duplicate frogs.
