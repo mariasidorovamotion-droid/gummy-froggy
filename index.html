@@ -328,6 +328,7 @@ const CONFIG = {
   jelly: { visScale: 1.0, points: 20, stiffness: 260, damping: 10, bulge: 0.35, popIn: 0.35, squashMax: 0.04 },
   // ступени: r — радиус в ширинах банки, score — очки за создание, coins — монеты за создание
   /* v0.38 (Сова): лягушки ±одного размера — крупная ×1.35 от мелкой (было ×2.9). v0.38.1: все ×1.35 крупнее v0.38.0; v0.40.7 (Сова: банка наполняется слишком быстро): ×1.15 к v0.38.0 */
+  coinSound: { window:0.6, maxPerWindow:6, gap:0.07, gapPer:0.03, gapMax:0.22, volPer:0.12, minVol:0.35 },   // поток «бульков» монет (v0.40.10)
   /* v0.40.9 (Сова, 2026-11-09 11:30: «размеры как в первом тизере, а после них синусоиду для других в линии»): 1–7 = размеры тизера v0.21 (0.046…0.165), с 8-й r = 0.1385 + 0.0265·cos(2π(n−7)/4) — волна от Шоколадки до Императора */
   /* v0.40.8 (Сова, 2026-11-09: «синусоиду скейла побольше, как на первом тизере — по всей линии мёрджа, и на топовых»): с 3-й ступени r = среднее 0.097→0.110 + 0.030·cos(2π(n−3)/4) — одна сильная волна без затухания до Императора; вишенка и мишка прежние */
   levels: [
@@ -532,8 +533,11 @@ const sound = {
   jokerUp(){ [1047,1319,1568].forEach((f,i)=>this.voice(f,f,0.16,0.06,{delay:i*0.06,lp:7000,attack:0.005,type:'triangle'})); this.voice(2093,2093,0.45,0.03,{delay:0.2,lp:9000,attack:0.004}); },
   coin(){ this.voice(784,784,0.18,0.022,{lp:2200,attack:0.012}); this.voice(1047,1047,0.22,0.016,{delay:0.05,lp:2400,attack:0.012}); },   // мягкий «дзынь» ниже и без щелчка
   coinTick(i){ /* v0.40.7 (Сова: «звук монет неприятный — что-то похожее на бульканье, pop»): «бульк» пузырька — синус с быстрым подъёмом высоты и короткой затухающей хвостиком; высота по кругу из 5 нот + лёгкий разброс; при потоке тише и не чаще 70 мс */
-    const now=this.ctx?this.ctx.currentTime:0; if(this._lastTick&&now-this._lastTick<0.07) return; this._lastTick=now;
-    const st=[0,3,5,7,10][i%5], f=330*Math.pow(2,st/12)*(0.96+Math.random()*0.08), k=Math.max(0.4,1-i*0.05);
+    /* v0.40.10 (Сова: «звук с монетками неприятный — слишком много одновременных срабатываний при бустах»): все «бульки» монет — один поток. Чем гуще поток за последние 0,6 с, тем больше пауза (70→220 мс) и тише звук; не больше 6 за 0,6 с */
+    const now=this.ctx?this.ctx.currentTime:0, B=CONFIG.coinSound; this._tk=(this._tk||[]).filter(t=>now-t<B.window);
+    const dense=this._tk.length, gap=Math.min(B.gapMax,B.gap+B.gapPer*dense);
+    if(dense>=B.maxPerWindow||(this._lastTick&&now-this._lastTick<gap)) return; this._lastTick=now; this._tk.push(now);
+    const st=[0,3,5,7,10][i%5], f=330*Math.pow(2,st/12)*(0.96+Math.random()*0.08), k=Math.max(B.minVol,1-dense*B.volPer);
     this.voice(f,f*2.6,0.11,0.05*k,{glide:0.045,lp:2200,attack:0.004});
     this.voice(f*1.5,f*3.2,0.06,0.012*k,{delay:0.012,glide:0.03,lp:2600,attack:0.003}); },
   pop(){ this.voice(520,260,0.18,0.12,{lp:1400}); this.noise(0.1,0.12,1200); },
