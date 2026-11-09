@@ -328,30 +328,31 @@ const CONFIG = {
   jelly: { visScale: 1.0, points: 20, stiffness: 260, damping: 10, bulge: 0.35, popIn: 0.35, squashMax: 0.04 },
   // ступени: r — радиус в ширинах банки, score — очки за создание, coins — монеты за создание
   /* v0.38 (Сова): лягушки ±одного размера — крупная ×1.35 от мелкой (было ×2.9). v0.38.1: все ×1.35 крупнее v0.38.0; v0.40.7 (Сова: банка наполняется слишком быстро): ×1.15 к v0.38.0 */
+  /* v0.40.9 (Сова, 2026-11-09 11:30: «размеры как в первом тизере, а после них синусоиду для других в линии»): 1–7 = размеры тизера v0.21 (0.046…0.165), с 8-й r = 0.1385 + 0.0265·cos(2π(n−7)/4) — волна от Шоколадки до Императора */
   /* v0.40.8 (Сова, 2026-11-09: «синусоиду скейла побольше, как на первом тизере — по всей линии мёрджа, и на топовых»): с 3-й ступени r = среднее 0.097→0.110 + 0.030·cos(2π(n−3)/4) — одна сильная волна без затухания до Императора; вишенка и мишка прежние */
   levels: [
     // v0.35.2: размеры — ровная лестница ×1.125 на ступень (вишенка крупнее для телефона, король меньше; соседние ступени различимы)
-    { name:'Вишенка',   r:0.058, color:'#e8323c', score:1,  coins:0 },
-    { name:'Мишка',     r:0.0653, color:'#4a8de0', score:3,  coins:0 },
-    { name:'Арбузик',   r:0.127, color:'#5cc93a', score:6,  coins:0 },
-    { name:'Апельсинка',r:0.0978, color:'#ff8a1f', score:10, coins:1 },
-    { name:'Карамелька',r:0.0685, color:'#ffd21f', score:15, coins:1 },
-    { name:'Виноградинка',r:0.0993,color:'#9a4de0', score:21, coins:1 },
-    { name:'Шоколадка', r:0.1301, color:'#7a3a1c', score:28, coins:2 },
-    { name:'Зефирка',   r:0.1008, color:'#ff7fb0', score:36, coins:2 },
-    { name:'Леденец',   r:0.0716, color:'#f03a4a', score:45, coins:3 },
-    { name:'Вафелька',    r:0.1024, color:'#ffb52a', score:55, coins:5 },
+    { name:'Вишенка',   r:0.046, color:'#e8323c', score:1,  coins:0 },
+    { name:'Мишка',     r:0.06, color:'#4a8de0', score:3,  coins:0 },
+    { name:'Арбузик',   r:0.076, color:'#5cc93a', score:6,  coins:0 },
+    { name:'Апельсинка',r:0.095, color:'#ff8a1f', score:10, coins:1 },
+    { name:'Карамелька',r:0.116, color:'#ffd21f', score:15, coins:1 },
+    { name:'Виноградинка',r:0.14,color:'#9a4de0', score:21, coins:1 },
+    { name:'Шоколадка', r:0.165, color:'#7a3a1c', score:28, coins:2 },
+    { name:'Зефирка',   r:0.1385, color:'#ff7fb0', score:36, coins:2 },
+    { name:'Леденец',   r:0.112, color:'#f03a4a', score:45, coins:3 },
+    { name:'Вафелька',    r:0.1385, color:'#ffb52a', score:55, coins:5 },
     // ---- премиум 11–20: продолжение лестницы после короля (два короля → мятная …). Сверху не падают, размер как у короля ----
-    { name:'Мятная',    r:0.1331, color:'#6fe0bd', score:100, coins:50,  premium:true },
-    { name:'Медовая',   r:0.1039, color:'#ffb020', score:120, coins:60,  premium:true },
-    { name:'Черничная', r:0.0746, color:'#6a63e8', score:145, coins:75,  premium:true },
-    { name:'Радужная',  r:0.1054, color:'#ff5fa0', score:170, coins:90,  premium:true },
-    { name:'Яблочко', r:0.1362, color:'#d2701e', score:200, coins:110, premium:true },
-    { name:'Сахарная вата', r:0.1069, color:'#ffa8d6', score:235, coins:130, premium:true },
-    { name:'Макарон',   r:0.0777, color:'#b38cec', score:275, coins:160, premium:true },
-    { name:'Рубиновая', r:0.1085, color:'#ff3a5c', score:320, coins:190, premium:true },
-    { name:'Галактика', r:0.1392, color:'#7a5cff', score:370, coins:230, premium:true },
-    { name:'Император', r:0.11, color:'#ffe08a', score:430, coins:300, premium:true },
+    { name:'Мятная',    r:0.165, color:'#6fe0bd', score:100, coins:50,  premium:true },
+    { name:'Медовая',   r:0.1385, color:'#ffb020', score:120, coins:60,  premium:true },
+    { name:'Черничная', r:0.112, color:'#6a63e8', score:145, coins:75,  premium:true },
+    { name:'Радужная',  r:0.1385, color:'#ff5fa0', score:170, coins:90,  premium:true },
+    { name:'Яблочко', r:0.165, color:'#d2701e', score:200, coins:110, premium:true },
+    { name:'Сахарная вата', r:0.1385, color:'#ffa8d6', score:235, coins:130, premium:true },
+    { name:'Макарон',   r:0.112, color:'#b38cec', score:275, coins:160, premium:true },
+    { name:'Рубиновая', r:0.1385, color:'#ff3a5c', score:320, coins:190, premium:true },
+    { name:'Галактика', r:0.165, color:'#7a5cff', score:370, coins:230, premium:true },
+    { name:'Император', r:0.1385, color:'#ffe08a', score:430, coins:300, premium:true },
   ],
   topMergeCoins: 500,      // два императора: исчезают, дают очки topMergeBonus и столько монет
   premium: { from: 10, glow: 0.55, glowPulse: 0.25, sparkleRate: 2.2, fxStars: 22, fxRays: 46 },   // ступени с 11-й (индекс 10) — премиум
